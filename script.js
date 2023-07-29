@@ -15,6 +15,7 @@ function setBudget() {
   }
   budgetInput.value = '';
   updateBudgetDisplay();
+  getBudgetText();
 }
 
 function addExpense() {
@@ -42,12 +43,16 @@ function deleteExpense(index) {
   updateExpenseList();
   updateTotalExpense();
 }
-
 function updateBudgetDisplay() {
   const budgetDisplay = document.getElementById('budgetDisplay');
   budgetDisplay.textContent = `Budget: £${budget.toFixed(2)}`;
 }
-
+function getBudgetText(){
+    const budgetDisplay= document.getElementById('budgetDisplay');
+    const value= budgetDisplay.innerText.slice(7);
+    const overall= document.getElementById('OverallScreen');
+    overall.innerText=`${value}`;
+}
 function updateExpenseList() {
   expenseList.innerHTML = '';
   for (const expense of expenses) {
