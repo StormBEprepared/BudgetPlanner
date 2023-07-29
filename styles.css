@@ -1,0 +1,111 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .budget-form,
+  .expense-form {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to new lines on small screens */
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* On small screens, make the budget form and expense form stack vertically */
+  @media screen and (max-width: 600px) {
+    .budget-form,
+    .expense-form {
+      flex-direction: column;
+    }
+  }
+  
+  .budget-form input[type="number"],
+  .expense-form input[type="text"],
+  .expense-form input[type="number"] {
+    padding: 5px;
+    font-size: 16px;
+    flex: 1; /* Take up remaining space in the flex container */
+  }
+  
+  .budget-form button,
+  .expense-form button {
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  
+  .expense-list h2 {
+    margin-top: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  span {
+    flex: 1;
+  }
+  
+  span.expense-name {
+    text-align: left;
+    margin-right: 10px;
+  }
+  
+  span.expense-amount {
+    text-align: right;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .total-expenses {
+    text-align: center;
+  }
+  
+  .total-expenses h2 {
+    margin-top: 0;
+  }
+  #budgetDisplay{
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .total-expenses #totalAmount {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* On small screens, adjust the font size of the total amount */
+  @media screen and (max-width: 400px) {
+    .total-expenses #totalAmount {
+      font-size: 20px;
+    }
+  }
+  

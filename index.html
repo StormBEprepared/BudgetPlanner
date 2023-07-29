@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Budget Tracker</h1>
+  </header>
+  <main>
+    <div class="budget-form">
+      <label for="budgetInput">Set Monthly Budget:</label>
+      <input type="number" id="budgetInput" placeholder="Enter your budget">
+      <button onclick="setBudget()">Set Budget</button>
+      <p id="budgetDisplay">Budget: £0.00</p>
+    </div>
+    <div class="expense-form">
+      <label for="expenseInput">Expense:</label>
+      <input type="text" id="expenseInput" placeholder="Enter the expense name">
+      <label for="amountInput">Amount (£):</label>
+      <input type="number" id="amountInput" placeholder="Enter the expense amount">
+      <button onclick="addExpense()">Add Expense</button>
+    </div>
+    <div class="expense-list">
+      <h2>Expenses:</h2>
+      <ul id="expenseList"></ul>
+    </div>
+    <div class="total-expenses">
+      <h2>Total Expense:</h2>
+      <span id="totalAmount">£0.00</span>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
