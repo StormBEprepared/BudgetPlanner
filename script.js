@@ -15,7 +15,6 @@ function setBudget() {
   }
   budgetInput.value = '';
   updateBudgetDisplay();
-  getBudgetText();
 }
 
 function addExpense() {
@@ -34,8 +33,9 @@ function addExpense() {
   expenses.push(expense);
   updateExpenseList();
   updateTotalExpense();
-  //expenseInput.value = '';
-  //amountInput.value = '';
+  expenseInput.value = '';
+  amountInput.value = '';
+  getBudgetText();
 }
 
 function deleteExpense(index) {
@@ -47,12 +47,27 @@ function updateBudgetDisplay() {
   const budgetDisplay = document.getElementById('budgetDisplay');
   budgetDisplay.textContent = `Budget: £${budget.toFixed(2)}`;
 }
-function getBudgetText(){
-    const budgetDisplay= document.getElementById('budgetDisplay');
-    const value= budgetDisplay.innerText.slice(7);
-    const overall= document.getElementById('OverallScreen');
-    overall.innerText=`${value}`;
+function getBudgetText() {
+  const budgetDisplay = document.getElementById('budgetDisplay');
+  const budgetText = budgetDisplay.innerText.slice(8);
+  const budgetValue = parseFloat(budgetText.replace(/[^\d.-]/g, ''));
+
+  const totalAmountDisplay = document.getElementById('totalAmount');
+  const totalAmountText = totalAmountDisplay.innerText.slice(1);
+  const totalAmount = parseFloat(totalAmountText.replace(/[^\d.-]/g, ''));
+
+  if (isNaN(budgetValue) || isNaN(totalAmount)) {
+    console.log("Invalid budgetValue or totalAmount.");
+    return;
+  }
+
+  const difference = budgetValue - totalAmount;
+
+  const overall = document.getElementById('OverallScreen');
+  overall.innerText = `${budgetText} - ${totalAmountText} =>Difference: £${difference.toFixed(2)}`;
 }
+
+
 function updateExpenseList() {
   expenseList.innerHTML = '';
   for (const expense of expenses) {
