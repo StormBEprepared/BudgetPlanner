@@ -42,10 +42,12 @@ function deleteExpense(index) {
   expenses.splice(index, 1);
   updateExpenseList();
   updateTotalExpense();
+  getBudgetText();
 }
 function updateBudgetDisplay() {
   const budgetDisplay = document.getElementById('budgetDisplay');
   budgetDisplay.textContent = `Budget: £${budget.toFixed(2)}`;
+  getBudgetText();
 }
 function getBudgetText() {
   const budgetDisplay = document.getElementById('budgetDisplay');
@@ -64,19 +66,21 @@ function getBudgetText() {
   const difference = budgetValue - totalAmount;
 
   const overall = document.getElementById('OverallScreen');
-  overall.innerText = `${budgetText} - ${totalAmountText} =>Difference: £${difference.toFixed(2)}`;
+  overall.innerText = `Money left: £${difference.toFixed(2)}`;
 }
 
 
 function updateExpenseList() {
   expenseList.innerHTML = '';
-  for (const expense of expenses) {
+  for (const [index, expense] of expenses.entries()) {
     const li = document.createElement('li');
+    const rowColor = index % 2 === 0 ? 'lightgray' : 'white'; // Alternating row colors
     li.innerHTML = `
       <span class="expense-name">${expense.name}</span>
       <span class="expense-amount">£${expense.amount.toFixed(2)}</span>
-      <button onclick="deleteExpense(${expenses.indexOf(expense)})">Delete</button>
+      <button onclick="deleteExpense(${index})" id="DeletionButton">Delete</button>
     `;
+    li.style.backgroundColor = rowColor; // Set the background color for the row
     expenseList.appendChild(li);
   }
 }
